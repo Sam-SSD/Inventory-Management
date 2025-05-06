@@ -1,6 +1,9 @@
-# utils.py
-
 def solicitar_nombre(mensaje):
+    """
+    Solicita al usuario un nombre de producto y valida que:
+    - No esté vacío
+    - No sea completamente numérico
+    """
     while True:
         nombre = input(mensaje).strip()
         if not nombre or nombre.isnumeric():
@@ -10,6 +13,11 @@ def solicitar_nombre(mensaje):
 
 
 def solicitar_precio(mensaje):
+    """
+    Solicita al usuario un precio flotante y valida que:
+    - Sea un número
+    - Sea mayor que cero
+    """
     while True:
         try:
             precio = float(input(mensaje))
@@ -22,6 +30,11 @@ def solicitar_precio(mensaje):
 
 
 def solicitar_cantidad(mensaje):
+    """
+    Solicita al usuario una cantidad entera y valida que:
+    - Sea un entero
+    - Sea mayor que cero
+    """
     while True:
         try:
             cantidad = int(input(mensaje))

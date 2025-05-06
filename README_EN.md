@@ -1,95 +1,123 @@
+
 ![Inventory management system](https://github.com/user-attachments/assets/f853b6a5-15d5-45a8-8c47-8f1721fa6ed5)
 
 # 🧾 Inventory Management System
 
+### 📘 Versión en español  
+[Haz clic aquí para ver el README en español](./README.md)
+
+---
+
 ## 📌 Project Description
 
-This project is part of the **Module 1 – Week 3 of the software development training**, focused on applying **functions with parameters, return values, lambda functions, and data collections in Python**. The main goal is to design an interactive inventory management system for a store, allowing efficient control over products using lists and dictionaries.
+This project is part of **Module 1 – Week 3 of the software development training**, aiming to build a modular, reusable, and scalable inventory management system. The new version is implemented in **Python using object-oriented programming (OOP)**, distributing logic across classes and independent files to improve maintainability and code clarity.
 
 ---
 
 ## 🎯 Features
 
-- **Add products**: Each product includes a name, price, and available quantity.
-- **Search for products** by name: Returns price and quantity if found.
-- **Update product prices** interactively.
-- **Delete products** from the inventory.
-- **Calculate total inventory value** using a lambda function.
-- **Display full inventory** in a readable format.
+- **Add products** with name, price, and available quantity. Duplicate product names are not allowed.
+- **Search products** by name and display detailed information.
+- **Update prices** of existing products.
+- **Delete products** from the inventory by name.
+- **Calculate total inventory value** automatically.
+- **Display the entire inventory** in a clear, readable format with thousands separators.
 
 ---
 
-## 🧠 Logic Implemented
+## 🧠 Implemented Logic
 
-- **Functions with parameters and return values** were used to modularize the program.
-- **Lambda function** is used to compute the total inventory value.
-- **Control structures**: `match-case`, `try-except`, loops, and validations for user input.
-- Products are stored in a **list of dictionaries**, enabling dynamic inventory growth.
-
----
-
-## ✅ Validations Performed
-
-- Data input is validated to avoid crashes (e.g., price and quantity must be numeric).
-- Case-insensitive search and matching.
-- Safe deletion and updating mechanisms.
-- Multiple edge cases tested:
-  1. Searching for non-existent products
-  2. Adding duplicate names
-  3. Invalid data types in inputs
-  4. Empty inventory cases
+- A class named `Inventario` encapsulates all business logic.
+- Input validations are abstracted into a separate `utils.py` file.
+- The interactive menu and program flow are handled from `main.py`.
+- The `match-case` structure (Python 3.10+) is used to manage the menu logic.
+- Products are stored in a list of dictionaries, allowing dynamic growth.
 
 ---
 
-## 📁 Code Structure
+## ✅ Validations Implemented
 
-- `agregar_producto`: Adds a new product to the inventory.
-- `buscar_producto`: Searches by name and returns product info.
-- `actualizar_precio`: Updates the price of a given product.
-- `eliminar_producto`: Deletes a product safely.
-- `calcular_valor_total`: Uses a lambda to compute inventory value.
-- `mostrar_inventario`: Displays all products in a formatted list.
-- `menu`: Interactive CLI menu for user navigation.
+- Strict input validation to prevent errors:
+  - Name must be non-empty and non-numeric.
+  - Name must be unique (no duplicates allowed).
+  - Price must be a positive decimal number.
+  - Quantity must be a positive integer.
+- Case-insensitive product name comparisons.
+- Prices and totals use thousands separators.
+- Exception handling with `try-except` for unexpected input errors.
+- Considered scenarios:
+  1. Empty inventory
+  2. Non-existent products
+  3. Duplicate product names
+  4. Invalid data types
+  5. Repeated or redundant operations
+
+---
+
+## 📁 Project Structure
+
+```
+inventory_app/
+├── main.py           # Interactive menu and application logic
+├── inventory.py      # Inventario class containing all core methods
+└── utils.py          # Helper functions for user input validation
+```
+
+---
+
+## 🧩 File Descriptions
+
+- `main.py`: Manages the system's execution flow and user interaction.
+- `inventory.py`: Contains the `Inventario` class, which handles product addition, search, updates, deletions, and total calculation.
+- `utils.py`: Includes reusable functions to validate user input: name, price, and quantity.
 
 ---
 
 ## 💡 Technical Justification
 
-- The decision to use a list of dictionaries provides flexibility and clarity.
-- Modular functions improve **readability**, **maintenance**, and **scalability**.
-- The lambda function was effectively integrated for fast total value calculation.
-- `match-case` improves flow readability, and `try-except` blocks improve UX.
+- Object-oriented design improves **modularity** and enables future expansion.
+- File separation enhances **code organization and reuse**.
+- A clear text-based interface provides intuitive interaction and user feedback.
+- Good practices were applied: encapsulation, inline documentation, and error handling.
 
 ---
 
-## 🚀 Future Enhancements
+## 🚀 Possible Future Improvements
 
-- Save/load inventory from external files (CSV or JSON).
-- Prevent duplicate product names.
-- Add product categories or tags.
-- Add sorting and filtering options.
-- Build a GUI using Tkinter or PyQt.
+- Add product categories and tags.
+- Export/import inventory from/to CSV or JSON files.
+- Implement custom filters and sorting options.
+- Build a GUI with Tkinter, PyQt, or a web interface using Flask.
 
 ---
 
-## 💻 How to Run
+## 💻 Execution Instructions
 
-1. Make sure you have Python 3.8+ installed.
+1. Make sure Python 3.10 or higher is installed.
 2. Clone this repository from GitHub:
 
    ```bash
    git clone https://github.com/Sam-SSD/Inventory-Management.git
-    ```
+   ```
+
 3. Navigate to the project directory:
-    ```bash
-    cd Inventory-Management
-    ```
-   
-4. Run the main file:
-    ```bash
-    python inventory_management.py
-    ```
-   
-5. Use the menu to add, search, update, or delete products.
+
+   ```bash
+   cd Inventory-Management
+   ```
+
+4. Navigate into the app folder:
+
+   ```bash
+   cd inventory_app
+   ```
+
+5. Run the main script:
+
+   ```bash
+   python main.py
+   ```
+
+6. Use the menu to manage your store's inventory.
 
 ---

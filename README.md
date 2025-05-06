@@ -2,83 +2,102 @@
 
 # 🧾 Sistema de Gestión de Inventario
 
-### 📘 English version  
+### 📘 English version
+
 [Click here to see the README in English](./README_EN.md)
 
+---
 
 ## 📌 Descripción del Proyecto
 
-Este proyecto forma parte del **Módulo 1 – Semana 3 del entrenamiento en desarrollo de software**, enfocado en aplicar **funciones con parámetros, valores de retorno, funciones lambda y colecciones de datos en Python**. El objetivo principal es diseñar un sistema interactivo para gestionar el inventario de una tienda, utilizando listas y diccionarios para controlar eficientemente los productos.
+Este proyecto forma parte del **Módulo 1 – Semana 3 del entrenamiento en desarrollo de software**, con el objetivo de
+construir un sistema de gestión de inventario modular, reutilizable y escalable. La nueva versión está implementada en *
+*Python con programación orientada a objetos (OOP)**, distribuyendo la lógica en clases y archivos independientes para
+favorecer la mantenibilidad y claridad del código.
 
 ---
 
 ## 🎯 Funcionalidades
 
-- **Agregar productos**: Cada producto incluye nombre, precio y cantidad disponible.
-- **Buscar productos** por nombre: Retorna precio y cantidad si se encuentra.
-- **Actualizar precios** de productos de forma interactiva.
-- **Eliminar productos** del inventario.
-- **Calcular el valor total del inventario** utilizando una función lambda.
-- **Mostrar el inventario completo** de manera clara y legible.
+- **Agregar productos** con nombre, precio y cantidad disponibles. No permite productos con nombres duplicados.
+- **Buscar productos** por nombre y mostrar su información detallada.
+- **Actualizar precios** de productos ya existentes.
+- **Eliminar productos** del inventario por nombre.
+- **Calcular el valor total del inventario** de forma automatizada.
+- **Mostrar el inventario completo** de manera clara y legible con separación de miles.
 
 ---
 
 ## 🧠 Lógica Implementada
 
-- Se emplearon **funciones con parámetros y retornos** para modularizar el programa.
-- Se utilizó una **función lambda** para calcular el valor total del inventario.
-- **Estructuras de control**: `match-case`, `try-except`, bucles y validaciones para la entrada del usuario.
-- Los productos se almacenan en una **lista de diccionarios**, permitiendo un crecimiento dinámico del inventario.
+- Se implementó una clase `Inventario` que encapsula toda la lógica de negocio.
+- Las validaciones de entrada se abstrajeron en un archivo `utils.py`.
+- El menú interactivo y el control del flujo se gestionan desde `main.py`.
+- Se utilizó la estructura `match-case` (Python 3.10+) para organizar el menú.
+- Se emplean listas de diccionarios como estructura para cada producto del inventario.
 
 ---
 
 ## ✅ Validaciones Realizadas
 
-- Validación de entradas para evitar errores (por ejemplo, precio y cantidad deben ser numéricos).
-- Búsqueda y coincidencias no sensibles a mayúsculas/minúsculas.
-- Eliminación y actualización seguras de productos.
-- Casos límite probados:
-  1. Búsqueda de productos inexistentes
-  2. Ingreso de nombres duplicados
-  3. Tipos de datos inválidos
-  4. Inventario vacío
+- Validación estricta para evitar errores de entrada:
+    - Nombre no vacío ni numérico.
+    - Nombre único (no duplicado).
+    - Precio mayor que cero y en formato decimal.
+    - Cantidad como número entero positivo.
+- Búsquedas no sensibles a mayúsculas/minúsculas.
+- Separadores de miles para precios y totales.
+- Manejo de excepciones (`try-except`) para errores inesperados.
+- Casos contemplados:
+    1. Inventario vacío
+    2. Productos inexistentes
+    3. Nombres duplicados
+    4. Tipos de datos inválidos
+    5. Operaciones repetidas o redundantes
 
 ---
 
-## 📁 Estructura del Código
+## 📁 Estructura del Proyecto
 
-- `agregar_producto`: Agrega un nuevo producto al inventario.
-- `buscar_producto`: Busca por nombre y retorna la información del producto.
-- `actualizar_precio`: Actualiza el precio de un producto dado.
-- `eliminar_producto`: Elimina un producto de forma segura.
-- `calcular_valor_total`: Utiliza una lambda para calcular el valor total.
-- `mostrar_inventario`: Muestra todos los productos en una lista formateada.
-- `menu`: Menú interactivo en consola para navegar entre funciones.
+```
+inventory_app/
+├── main.py           # Menú interactivo y flujo del sistema
+├── inventory.py      # Clase Inventario con todos los métodos del sistema
+└── utils.py          # Funciones auxiliares para validación de datos
+```
+
+---
+
+## 🧩 Descripción de Archivos
+
+- `main.py`: Controla la ejecución principal del sistema. Contiene el menú y la interacción con el usuario.
+- `inventory.py`: Contiene la clase `Inventario`, que permite agregar, buscar, actualizar, eliminar productos y calcular
+  el valor total.
+- `utils.py`: Incluye funciones reutilizables para validar entradas del usuario: nombre, precio y cantidad.
 
 ---
 
 ## 💡 Justificación Técnica
 
-- Se optó por una **lista de diccionarios** por su flexibilidad y claridad estructural.
-- Las funciones modulares favorecen la **legibilidad, mantenimiento y escalabilidad**.
-- La función lambda se integró eficientemente para el cálculo rápido del inventario.
-- El uso de `match-case` mejora la fluidez del menú y `try-except` ofrece mejor experiencia de usuario.
+- Se utilizó orientación a objetos para mejorar la **modularidad** y facilitar futuras ampliaciones.
+- La separación por archivos mejora la **organización y reutilización del código**.
+- Se priorizó una **interfaz clara por consola**, con feedback útil para el usuario.
+- Se aplicaron buenas prácticas: encapsulamiento, documentación interna y control de errores.
 
 ---
 
 ## 🚀 Posibles Mejoras Futuras
 
-- Guardar/cargar el inventario desde archivos externos (CSV o JSON).
-- Evitar nombres de productos duplicados.
-- Añadir categorías o etiquetas a los productos.
-- Incluir opciones de ordenamiento y filtrado.
-- Construir una interfaz gráfica con Tkinter o PyQt.
+- Agregar categorías y etiquetas por producto.
+- Exportar/importar inventario a archivos CSV o JSON.
+- Implementar filtros y ordenamientos personalizados.
+- Integrar una interfaz gráfica con Tkinter, PyQt o web (Flask).
 
 ---
 
 ## 💻 Instrucciones de Ejecución
 
-1. Asegúrate de tener Python 3.8 o superior instalado.
+1. Asegúrate de tener Python 3.10 o superior instalado.
 2. Clona este repositorio desde GitHub:
 
    ```bash
@@ -90,13 +109,18 @@ Este proyecto forma parte del **Módulo 1 – Semana 3 del entrenamiento en desa
    ```bash
    cd Inventory-Management
    ```
-
-4. Ejecuta el archivo principal:
+4. Navega al directorio del proyecto:
 
    ```bash
-   python inventory_management.py
+   cd inventory_app
    ```
 
-5. Usa el menú interactivo para agregar, buscar, actualizar o eliminar productos.
+5. Ejecuta el sistema desde el archivo principal:
+
+   ```bash
+   python main.py
+   ```
+
+6. Interactúa con el menú para gestionar el inventario de tu tienda.
 
 ---

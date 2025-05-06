@@ -1,10 +1,11 @@
-# main.py
-
 from inventory import Inventario
 from utils import solicitar_nombre, solicitar_precio, solicitar_cantidad
 
 
 def menu():
+    """
+    Imprime las opciones disponibles para el usuario y solicita la opción elegida.
+    """
     print("\n📌 Menú de opciones:")
     print("1. Agregar producto")
     print("2. Buscar producto")
@@ -16,8 +17,10 @@ def menu():
     return input("Seleccione una opción: ").strip()
 
 
+# --------------------- Inicio del Programa ---------------------
+
 print("🔧 Bienvenido al sistema de gestión de inventario 🔧")
-inventario = Inventario()
+inventario = Inventario()  # Se crea una instancia del inventario
 
 while True:
     try:
@@ -75,5 +78,6 @@ while True:
                 print("------------------------------------------------------")
 
     except Exception as e:
+        # Captura cualquier error no controlado y evita que el programa se caiga
         print(f"\n⚠️ Error: {e}.")
         print("------------------------------------------------------")
