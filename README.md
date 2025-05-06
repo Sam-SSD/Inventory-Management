@@ -11,8 +11,8 @@
 ## 📌 Descripción del Proyecto
 
 Este proyecto forma parte del **Módulo 1 – Semana 3 del entrenamiento en desarrollo de software**, con el objetivo de
-construir un sistema de gestión de inventario modular, reutilizable y escalable. La nueva versión está implementada en *
-*Python con programación orientada a objetos (OOP)**, distribuyendo la lógica en clases y archivos independientes para
+construir un sistema de gestión de inventario modular, reutilizable y escalable. La nueva versión está implementada en 
+**Python con programación orientada a objetos (OOP)**, distribuyendo la lógica en clases y archivos independientes para
 favorecer la mantenibilidad y claridad del código.
 
 ---
