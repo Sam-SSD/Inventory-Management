@@ -10,47 +10,43 @@
 
 ## 📌 Project Description
 
-This project is part of **Module 1 – Week 3 of the software development training**, aiming to build a modular, reusable, and scalable inventory management system. The new version is implemented in **Python using object-oriented programming (OOP)**, distributing logic across classes and independent files to improve maintainability and code clarity.
+This project is part of **Module 1 – Week 3 of the software development training**, and its goal is to build an **interactive inventory management system** using **Python**. The current version is based on **modular design** and clear separation of concerns, distributing the logic across independent files (`main.py`, `inventory.py`, `utils.py`) to improve scalability, maintainability, and code clarity.
 
 ---
 
 ## 🎯 Features
 
-- **Add products** with name, price, and available quantity. Duplicate product names are not allowed.
-- **Search products** by name and display detailed information.
+- **Add products** with name, price, and quantity (duplicate names are not allowed).
+- **Search products** by name.
 - **Update prices** of existing products.
-- **Delete products** from the inventory by name.
-- **Calculate total inventory value** automatically.
-- **Display the entire inventory** in a clear, readable format with thousands separators.
+- **Delete products** from the inventory.
+- **Calculate the total inventory value** with thousand separators.
+- **Display the entire inventory** in a clear and formatted view.
 
 ---
 
 ## 🧠 Implemented Logic
 
-- A class named `Inventario` encapsulates all business logic.
-- Input validations are abstracted into a separate `utils.py` file.
-- The interactive menu and program flow are handled from `main.py`.
-- The `match-case` structure (Python 3.10+) is used to manage the menu logic.
-- Products are stored in a list of dictionaries, allowing dynamic growth.
+- A class called `Inventario` encapsulates all core business logic.
+- Code is divided into modules:
+  - `main.py` manages user interaction and the control flow.
+  - `inventory.py` contains the inventory business logic.
+  - `utils.py` centralizes input validation functions.
+- Uses `match-case` (Python 3.10+) for the main menu.
+- All menu actions are implemented as separate handler functions (`handle_*`) for clarity and maintainability.
 
 ---
 
-## ✅ Validations Implemented
+## ✅ Input Validations
 
-- Strict input validation to prevent errors:
-  - Name must be non-empty and non-numeric.
-  - Name must be unique (no duplicates allowed).
-  - Price must be a positive decimal number.
-  - Quantity must be a positive integer.
-- Case-insensitive product name comparisons.
-- Prices and totals use thousands separators.
-- Exception handling with `try-except` for unexpected input errors.
-- Considered scenarios:
-  1. Empty inventory
-  2. Non-existent products
-  3. Duplicate product names
-  4. Invalid data types
-  5. Repeated or redundant operations
+- Strict validation to prevent invalid entries:
+  - **Name** must be non-empty and non-numeric.
+  - **Name** must be unique (no duplicates).
+  - **Price** must be a positive decimal number.
+  - **Quantity** must be a positive integer.
+- Case-insensitive name comparisons.
+- Thousand separators used for monetary values.
+- Exception handling using `try-except` blocks for robustness.
 
 ---
 
@@ -58,42 +54,47 @@ This project is part of **Module 1 – Week 3 of the software development traini
 
 ```
 inventory_app/
-├── main.py           # Interactive menu and application logic
-├── inventory.py      # Inventario class containing all core methods
-└── utils.py          # Helper functions for user input validation
+├── main.py         # Interactive menu and main application logic
+├── inventory.py    # Inventario class with core business logic
+└── utils.py        # Reusable validation functions for user input
 ```
 
 ---
 
 ## 🧩 File Descriptions
 
-- `main.py`: Manages the system's execution flow and user interaction.
-- `inventory.py`: Contains the `Inventario` class, which handles product addition, search, updates, deletions, and total calculation.
-- `utils.py`: Includes reusable functions to validate user input: name, price, and quantity.
+- **`main.py`**  
+  Contains the program's entry point and functions like `handle_add_product`, `handle_search_product`, etc., to drive the user interaction.
+
+- **`inventory.py`**  
+  Defines the `Inventario` class which includes logic for adding, searching, updating, deleting, and displaying products.
+
+- **`utils.py`**  
+  Offers helper functions to validate user inputs such as name, price, and quantity.
 
 ---
 
 ## 💡 Technical Justification
 
-- Object-oriented design improves **modularity** and enables future expansion.
-- File separation enhances **code organization and reuse**.
-- A clear text-based interface provides intuitive interaction and user feedback.
-- Good practices were applied: encapsulation, inline documentation, and error handling.
+- Object-oriented programming improves **modularity** and makes future enhancements easier.
+- File separation promotes **clean organization and reuse**.
+- The console interface provides a user-friendly experience with clear feedback.
+- Professional practices were applied: encapsulation, modularity, inline documentation, and structured exception handling.
 
 ---
 
 ## 🚀 Possible Future Improvements
 
-- Add product categories and tags.
-- Export/import inventory from/to CSV or JSON files.
-- Implement custom filters and sorting options.
-- Build a GUI with Tkinter, PyQt, or a web interface using Flask.
+- Add product categories and custom tags.
+- Export/import inventory to/from CSV or JSON files.
+- Implement sorting and filtering by price, quantity, etc.
+- Develop a graphical user interface with Tkinter, PyQt, or a web app using Flask or Django.
 
 ---
 
 ## 💻 Execution Instructions
 
-1. Make sure Python 3.10 or higher is installed.
+1. Make sure you have **Python 3.10 or higher** installed.
 2. Clone this repository from GitHub:
 
    ```bash
@@ -103,21 +104,15 @@ inventory_app/
 3. Navigate to the project directory:
 
    ```bash
-   cd Inventory-Management
+   cd Inventory-Management/inventory_app
    ```
 
-4. Navigate into the app folder:
-
-   ```bash
-   cd inventory_app
-   ```
-
-5. Run the main script:
+4. Run the system from the main script:
 
    ```bash
    python main.py
    ```
 
-6. Use the menu to manage your store's inventory.
+5. Use the interactive menu to manage your store's inventory.
 
 ---
