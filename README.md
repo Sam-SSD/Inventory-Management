@@ -20,7 +20,7 @@ Este proyecto hace parte del **Módulo 1 – Semana 3 del entrenamiento en desar
 - **Buscar productos** por nombre.
 - **Actualizar el precio** de productos existentes.
 - **Eliminar productos** del inventario.
-- **Calcular el valor total del inventario** con separación de miles.
+- **Calcular el valor total del inventario** con separación de miles y una operación lambda.
 - **Mostrar el inventario completo** con una presentación clara y organizada.
 
 ---

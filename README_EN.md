@@ -20,7 +20,7 @@ This project is part of **Module 1 – Week 3 of the software development traini
 - **Search products** by name.
 - **Update prices** of existing products.
 - **Delete products** from the inventory.
-- **Calculate the total inventory value** with thousand separators.
+- **Calculate the total inventory value** with thousand separators and a lambda operation.
 - **Display the entire inventory** in a clear and formatted view.
 
 ---

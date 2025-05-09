@@ -1,4 +1,4 @@
-def solicitar_nombre(mensaje):
+def validar_nombre(mensaje):
     """
     Solicita al usuario un nombre válido.
 
@@ -20,7 +20,7 @@ def solicitar_nombre(mensaje):
             return nombre
 
 
-def solicitar_precio(mensaje):
+def validar_precio(mensaje):
     """
     Solicita al usuario un precio numérico válido.
 
@@ -45,7 +45,7 @@ def solicitar_precio(mensaje):
             print("❌ Entrada no válida. Ingrese un número válido para el precio.")
 
 
-def solicitar_cantidad(mensaje):
+def validar_cantidad(mensaje):
     """
     Solicita al usuario una cantidad entera válida.
 

@@ -69,12 +69,12 @@ class Inventario:
 
     def calcular_valor_total(self):
         """
-        Calcula el valor total del inventario como la suma de (precio * cantidad) por producto.
+        Calcula el valor total del inventario con una función lambda.
 
         Retorna:
             float: Valor total del inventario.
         """
-        return sum(p["precio"] * p["cantidad"] for p in self.productos)
+        return sum(map(lambda p: p["precio"] * p["cantidad"], self.productos))
 
     def mostrar_inventario(self):
         """
