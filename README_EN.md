@@ -27,7 +27,7 @@ This project is part of **Module 1 – Week 3 of the software development traini
 
 ## 🧠 Implemented Logic
 
-- A class called `Inventario` encapsulates all core business logic.
+- A class called `Inventory` encapsulates all core business logic.
 - Code is divided into modules:
   - `main.py` manages user interaction and the control flow.
   - `inventory.py` contains the inventory business logic.
@@ -55,7 +55,7 @@ This project is part of **Module 1 – Week 3 of the software development traini
 ```
 inventory_app/
 ├── main.py         # Interactive menu and main application logic
-├── inventory.py    # Inventario class with core business logic
+├── inventory.py    # Inventory class with core business logic
 └── utils.py        # Reusable validation functions for user input
 ```
 
@@ -67,7 +67,7 @@ inventory_app/
   Contains the program's entry point and functions like `handle_add_product`, `handle_search_product`, etc., to drive the user interaction.
 
 - **`inventory.py`**  
-  Defines the `Inventario` class which includes logic for adding, searching, updating, deleting, and displaying products.
+  Defines the `Inventory` class which includes logic for adding, searching, updating, deleting, and displaying products.
 
 - **`utils.py`**  
   Offers helper functions to validate user inputs such as name, price, and quantity.

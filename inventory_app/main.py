@@ -1,122 +1,137 @@
-from inventory import Inventario
+import inventory
 import utils
 
-# Instancia principal del inventario
-inventario = Inventario()
+# Main inventory instance
+inventory = inventory.Inventory()
+inventory.add_products("Apple", 1.00, 10)
+inventory.add_products("Banana", 0.50, 15)
+inventory.add_products("Orange", 0.75, 12)
+inventory.add_products("Milk", 2.50, 8)
+inventory.add_products("Bread", 1.25, 20)
 
 
-def handle_agregar_producto():
+def handle_add_product():
     """
-    Gestiona la lógica para agregar un nuevo producto al inventario.
-    Solicita el nombre, precio y cantidad al usuario.
+    Manages the logic for adding a new product to inventory.
+    Requests the name, price, and quantity from the user.
     """
-    print("\n------------------ Agregar Producto ------------------")
-    nombre = utils.validar_nombre("Ingrese el nombre del producto: ")
-    precio = utils.validar_precio("Ingrese el precio del producto: ")
-    cantidad = utils.validar_cantidad("Ingrese la cantidad: ")
-    inventario.agregar_producto(nombre, precio, cantidad)
+    print("\n------------------ Add Product ------------------")
+    name = utils.validate_name("Enter the name of the product: ")
+    price = utils.validate_price("Enter the price of the product: ")
+    quantity = utils.validate_quantity("Enter the quantity: ")
+    inventory.add_products(name, price, quantity)
     print("------------------------------------------------------")
 
 
-def handle_buscar_producto():
+def handle_search_product():
     """
-    Gestiona la búsqueda de un producto por su nombre y muestra la información si lo encuentra.
+    Manages the search for a product by name and displays the information if it is found.
     """
-    print("\n------------------ Buscar Producto -------------------")
-    nombre = utils.validar_nombre("Ingrese el nombre del producto a buscar: ")
-    producto = inventario.buscar_producto(nombre)
-    if producto:
-        print(
-            f"🔎 Encontrado: {producto['nombre']} | Precio: ${producto['precio']:,.2f} | Cantidad: {producto['cantidad']}")
-    print("------------------------------------------------------")
+    print("\n------------------ Search Product -------------------")
+    if utils.validate_available_product(inventory):
+        name = utils.validate_name("Enter the name of the product to search: ")
+        product = inventory.search_product(name)
+        if product:
+            print(
+                f"🔎 Product Found: {product['name']} | Price: ${product['price']:,.2f} | Quantity: {product['quantity']}")
+        print("------------------------------------------------------")
+    else:
+        return
 
 
-def handle_actualizar_precio():
+def handle_update_price():
     """
-    Permite actualizar el precio de un producto existente.
+    Allows updating the price of an existing product.
     """
-    print("\n---------------- Actualizar Precio -------------------")
-    nombre = utils.validar_nombre("Ingrese el nombre del producto a actualizar: ")
-    nuevo_precio = utils.validar_precio("Ingrese el nuevo precio: ")
-    inventario.actualizar_precio(nombre, nuevo_precio)
-    print("------------------------------------------------------")
+    print("\n---------------- Update Price -------------------")
+    if utils.validate_available_product(inventory):
+        name = utils.validate_name("Enter the name of the product to update: ")
+        new_price = utils.validate_price("Enter the new price: ")
+        inventory.update_price(name, new_price)
+        print("------------------------------------------------------")
+    else:
+        return
 
 
-def handle_eliminar_producto():
+def handle_delete_product():
     """
-    Permite eliminar un producto del inventario si existe.
+    Allows removing a product from the inventory if it exists.
     """
-    print("\n---------------- Eliminar Producto -------------------")
-    nombre = utils.validar_nombre("Ingrese el nombre del producto a eliminar: ")
-    inventario.eliminar_producto(nombre)
-    print("------------------------------------------------------")
+    print("\n---------------- Delete Product -------------------")
+    if utils.validate_available_product(inventory):
+        name = utils.validate_name("Enter the name of the product to delete: ")
+        inventory.delete_product(name)
+    else:
+        return
 
 
-def handle_valor_total():
+def handle_total_value():
     """
-    Calcula y muestra el valor total del inventario.
+    Calculates and displays the total value of the inventory.
     """
-    print("\n------------ Valor Total del Inventario -------------")
-    total = inventario.calcular_valor_total()
-    print(f"💰 Valor total del inventario: ${total:,.2f}")
-    print("------------------------------------------------------")
+    print("\n------------ Total Value of Inventory -------------")
+    if utils.validate_available_product(inventory):
+        total = inventory.calculate_total_value()
+        print(f"💰 Total inventory value: ${total:,.2f}")
+        print("-----------------------------------------------------")
+    else:
+        return
 
 
-def handle_mostrar_inventario():
+def handle_show_inventory():
     """
-    Muestra todos los productos del inventario en una lista legible.
+    Displays all products in the inventory in a readable list.
     """
-    print("\n------------------ Mostrar Inventario ----------------")
-    inventario.mostrar_inventario()
+    print("\n------------------ Show Inventory ----------------")
+    inventory.show_inventory()
     print("------------------------------------------------------")
 
 
 def menu():
     """
-    Muestra el menú principal y devuelve la opción seleccionada por el usuario.
+    Displays the main menu and returns the option selected by the user.
 
     Returns:
-        str: Opción elegida por el usuario.
+        str: Option chosen by the user.
     """
-    print("\n📌 Menú de opciones:")
-    print("1. Agregar producto")
-    print("2. Buscar producto")
-    print("3. Actualizar precio")
-    print("4. Eliminar producto")
-    print("5. Calcular valor total del inventario")
-    print("6. Mostrar inventario")
-    print("7. Salir")
-    return input("Seleccione una opción: ").strip()
+    print("\n📌 Options menu:")
+    print("1. Add product")
+    print("2. Search product")
+    print("3. Update price")
+    print("4. Delete product")
+    print("5. Total value of inventory")
+    print("6. Show inventory")
+    print("7. Exit")
+    return input("Select an option: ").strip()
 
 
-# --------------------- Inicio del Programa ---------------------
-print("🔧 Bienvenido al sistema de gestión de inventario 🔧")
-
+# Start of program
+print("\n🔧 Welcome to the inventory management system 🔧")
 while True:
     try:
-        opcion = menu()
+        option = menu()
 
-        match opcion:
+        match option:
             case "1":
-                handle_agregar_producto()
+                handle_add_product()
             case "2":
-                handle_buscar_producto()
+                handle_search_product()
             case "3":
-                handle_actualizar_precio()
+                handle_update_price()
             case "4":
-                handle_eliminar_producto()
+                handle_delete_product()
             case "5":
-                handle_valor_total()
+                handle_total_value()
             case "6":
-                handle_mostrar_inventario()
+                handle_show_inventory()
             case "7":
-                print("\n👋 Saliendo del programa. ¡Hasta luego!")
+                print("\n👋 Exiting the program. ¡See you later!")
                 print("------------------------------------------------------")
                 break
             case _:
-                print("\n❗ Opción inválida. Intente nuevamente.")
+                print("\n❗ Invalid option. Please try again.")
                 print("------------------------------------------------------")
 
-    except Exception as e:
-        print(f"\n⚠️ Error: {e}.")
+    except Exception as error:
+        print(f"\n Error: {error}.")
         print("------------------------------------------------------")

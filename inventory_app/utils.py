@@ -1,70 +1,88 @@
-def validar_nombre(mensaje):
+def validate_name(message):
     """
-    Solicita al usuario un nombre válido.
+    Prompts the user for a valid name.
 
-    Requisitos:
-    - No debe estar vacío.
-    - No debe ser numérico.
+    Requirements:
+    - Must not be empty.
+    - Must not be numeric.
 
-    Parámetros:
-        mensaje (str): Texto que se muestra como instrucción.
+    Parameters:
+    message (str): Text to display as an instruction.
 
-    Retorna:
-        str: Nombre validado.
+    Returns:
+    str: Validated name.
     """
     while True:
-        nombre = input(mensaje).strip()
-        if not nombre or nombre.isnumeric():
-            print("❌ Nombre inválido. Ingrese un nombre válido.")
+        name = input(message).strip()
+        if not name or name.isnumeric():
+            print("❌ Invalid name. Please enter a valid name.")
         else:
-            return nombre
+            return name
 
 
-def validar_precio(mensaje):
+def validate_price(message):
     """
-    Solicita al usuario un precio numérico válido.
+    Prompts the user for a valid numeric price.
 
-    Requisitos:
-    - Debe ser un número flotante.
-    - Debe ser mayor que cero.
+    Requirements:
+    - Must be a float.
+    - Must be greater than zero.
 
-    Parámetros:
-        mensaje (str): Texto que se muestra como instrucción.
+    Parameters:
+    message (str): Text to display as an instruction.
 
-    Retorna:
-        float: Precio validado.
-    """
-    while True:
-        try:
-            precio = float(input(mensaje))
-            if precio <= 0:
-                print("❌ El precio debe ser mayor que cero.")
-            else:
-                return precio
-        except ValueError:
-            print("❌ Entrada no válida. Ingrese un número válido para el precio.")
-
-
-def validar_cantidad(mensaje):
-    """
-    Solicita al usuario una cantidad entera válida.
-
-    Requisitos:
-    - Debe ser un número entero.
-    - Debe ser mayor que cero.
-
-    Parámetros:
-        mensaje (str): Texto que se muestra como instrucción.
-
-    Retorna:
-        int: Cantidad validada.
+    Returns:
+    float: Validated price.
     """
     while True:
         try:
-            cantidad = int(input(mensaje))
-            if cantidad <= 0:
-                print("❌ La cantidad debe ser mayor que cero.")
+            price = float(input(message))
+            if price <= 0:
+                print("❌ The price must be greater than zero.")
             else:
-                return cantidad
+                return price
         except ValueError:
-            print("❌ Entrada no válida. Ingrese un número entero válido.")
+            print("❌ Invalid entry. Please enter a valid number for the price.")
+
+
+def validate_quantity(message):
+    """
+    Prompts the user for a valid integer quantity.
+
+    Requirements:
+    - Must be an integer.
+    - Must be greater than zero.
+
+    Parameters:
+    message (str): Text to display as an instruction.
+
+    Returns:
+    int: Validated quantity.
+    """
+    while True:
+        try:
+            quantity = int(input(message))
+            if quantity <= 0:
+                print("❌ The quantity must be greater than zero.")
+            else:
+                return quantity
+        except ValueError:
+            print("❌ Invalid input. Please enter a valid integer.")
+
+
+def validate_available_product(inventory):
+    """
+    Validates if there are any available products in the inventory.
+    If not, it informs the user and returns False.
+    Otherwise, it returns True.
+    Args:
+        inventory (inventory): The inventory instance to check.
+    Returns:
+        bool: True if there are available books, False otherwise.
+    """
+    if not inventory.products:
+        print("❌ No books available in the library.")
+        print("------------------------------------------------")
+        return False
+    else:
+        return True

@@ -1,88 +1,91 @@
-class Inventario:
+class Inventory:
     def __init__(self):
-        # Lista principal que almacena los productos como diccionarios
-        self.productos = []
+        self.products = []
 
-    def agregar_producto(self, nombre, precio, cantidad):
+    def add_products(self, name, price, quantity):
         """
-        Agrega un nuevo producto al inventario si no existe un nombre duplicado (no sensible a mayúsculas).
+        Adds a new product to the inventory if there is no duplicate name (case-insensitive).
 
-        Parámetros:
-            nombre (str): Nombre del producto.
-            precio (float): Precio unitario.
-            cantidad (int): Cantidad disponible.
+        Parameters:
+            name (str): Product name.
+            price (float): Unit price.
+            quantity (int): Quantity available.
         """
-        for p in self.productos:
-            if p["nombre"].lower() == nombre.lower():
-                print(f"⚠️ Ya existe un producto con el nombre '{nombre}'. No se agregó.")
+
+        for p in self.products:
+            if p["name"].lower() == name.lower():
+                print(f"️⚠️ A product with the name '{name}' already exists. It has not been added.")
                 return
 
-        self.productos.append({
-            "nombre": nombre,
-            "precio": precio,
-            "cantidad": cantidad
+        self.products.append({
+            "name": name,
+            "price": price,
+            "quantity": quantity
         })
-        print(f"✅ Producto '{nombre}' agregado con éxito.")
+        print(f"✅ Product '{name}' added successfully.")
 
-    def buscar_producto(self, nombre):
+    def search_product(self, name):
         """
-        Busca un producto en el inventario por nombre (no sensible a mayúsculas).
+        Search for a product in the inventory by name (case-insensitive).
 
-        Parámetros:
-            nombre (str): Nombre del producto a buscar.
+        Parameters:
+            name (str): Name of the product to search for.
 
-        Retorna:
-            dict: El producto si se encuentra, o None si no existe.
+        Returns:
+            dict: The product if found, or None if it doesn't exist.
         """
-        for producto in self.productos:
-            if producto["nombre"].lower() == nombre.lower():
-                return producto
-        print(f"❌ Producto '{nombre}' no encontrado.")
+        for product in self.products:
+            if product["name"].lower() == name.lower():
+                return product
+        print(f"❌ Product '{name}' not found.")
         return None
 
-    def actualizar_precio(self, nombre, nuevo_precio):
+    def update_price(self, name, new_price):
         """
-        Actualiza el precio de un producto si existe.
+        Updates a product's price if it exists.
 
-        Parámetros:
-            nombre (str): Nombre del producto.
-            nuevo_precio (float): Nuevo precio a asignar.
+        Parameters:
+            name (str): Product name.
+            new_price (float): New price to assign.
         """
-        producto = self.buscar_producto(nombre)
-        if producto:
-            producto["precio"] = nuevo_precio
-            print(f"🛠 Precio de '{nombre}' actualizado a ${nuevo_precio:,.2f}.")
+        product = self.search_product(name)
+        if product:
+            product["price"] = new_price
+            print(f"🛠 Price of '{name}' updated to ${new_price:,.2f}.")
 
-    def eliminar_producto(self, nombre):
+    def delete_product(self, name):
         """
-        Elimina un producto del inventario si existe.
+        Deletes a product from inventory if it exists.
 
-        Parámetros:
-            nombre (str): Nombre del producto a eliminar.
+        Parameters:
+            name (str): Name of the product to delete.
         """
-        for i, producto in enumerate(self.productos):
-            if producto["nombre"].lower() == nombre.lower():
-                del self.productos[i]
-                print(f"🗑 Producto '{nombre}' eliminado.")
+        for i, product in enumerate(self.products):
+            if product["name"].lower() == name.lower():
+                del self.products[i]
+                print(f"🗑 Product '{name}' deleted.")
                 return
-        print(f"❌ Producto '{nombre}' no encontrado.")
+        print(f"❌ Product '{name}' not found.")
 
-    def calcular_valor_total(self):
+    def calculate_total_value(self):
         """
-        Calcula el valor total del inventario con una función lambda.
+        Calculates the total inventory value using a lambda function.
 
-        Retorna:
-            float: Valor total del inventario.
+        Returns:
+            float: Total inventory value.
         """
-        return sum(map(lambda p: p["precio"] * p["cantidad"], self.productos))
+        return sum(map(lambda p: p["price"] * p["quantity"], self.products))
 
-    def mostrar_inventario(self):
+    def show_inventory(self):
         """
-        Muestra todos los productos en el inventario con su precio y cantidad disponibles.
+        Displays all products in inventory with their price and available quantity.
+
+        Returns:
+            All products in inventory
         """
-        if not self.productos:
-            print("📦 El inventario está vacío.")
+        if not self.products:
+            print("📦 The inventory is empty")
         else:
-            print("\n📋 Inventario actual:")
-            for p in self.productos:
-                print(f"- {p['nombre']} | Precio: ${p['precio']:,.2f} | Cantidad: {p['cantidad']}")
+            print("\n Current inventory:")
+            for product in self.products:
+                print(f"- {product['name']} | Price: ${product['price']:,.2f} | Quantity: {product['quantity']}")
