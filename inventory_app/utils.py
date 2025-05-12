@@ -81,7 +81,7 @@ def validate_available_product(inventory):
         bool: True if there are available books, False otherwise.
     """
     if not inventory.products:
-        print("❌ No books available in the library.")
+        print("❌ No products available in the inventory")
         print("------------------------------------------------")
         return False
     else:
